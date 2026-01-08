@@ -70,14 +70,7 @@ body {
     transition: filter 0.5s ease;
 }
 
-/* Optional: Bei Hover Animation verlangsamen */
-.scene-container:hover {
-    filter: saturate(1.2);
-}
-
-.scene-container:hover * {
-    animation-duration: calc(var(--animation-duration) * 2) !important;
-}
+/* Hover-Effekt entfernt um Flackern beim Cursor-Wechsel zu vermeiden */
 
 /* ============================================
    ANIMATION 1: Himmel mit Farbverlauf-Animation
