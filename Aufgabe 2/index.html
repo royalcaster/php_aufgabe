@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonnenaufgang - CSS Animation</title>
+    
+    <!-- 
+        CSS-Animation Aufgabe
+        Theme: Sonnenaufgang mit mehreren animierten Elementen
+        
+        Animationen:
+        1. Sonne steigt auf (transform: translateY, mit Farbänderung)
+        2. Himmel ändert Farbe (background gradient animation)
+        3. Vogel fliegt vorbei (transform: translateX + Flügelschlag)
+        4. Wolken bewegen sich (transform: translateX)
+        5. Sonnenstrahlen pulsieren (opacity + scale)
+    -->
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Font für die Beschriftung -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Container für die gesamte Animation -->
+    <div class="scene-container">
+        
+        <!-- Himmel mit animiertem Gradient -->
+        <div class="sky">
+            <!-- Sterne die bei Sonnenaufgang verschwinden -->
+            <div class="stars">
+                <div class="star star-1"></div>
+                <div class="star star-2"></div>
+                <div class="star star-3"></div>
+                <div class="star star-4"></div>
+                <div class="star star-5"></div>
+            </div>
+            
+            <!-- Wolken die über den Himmel ziehen -->
+            <div class="cloud cloud-1">
+                <div class="cloud-part"></div>
+                <div class="cloud-part"></div>
+                <div class="cloud-part"></div>
+            </div>
+            <div class="cloud cloud-2">
+                <div class="cloud-part"></div>
+                <div class="cloud-part"></div>
+                <div class="cloud-part"></div>
+            </div>
+        </div>
+        
+        <!-- Sonne mit Strahlen -->
+        <div class="sun-container">
+            <div class="sun">
+                <!-- Sonnenstrahlen -->
+                <div class="sun-rays">
+                    <div class="ray ray-1"></div>
+                    <div class="ray ray-2"></div>
+                    <div class="ray ray-3"></div>
+                    <div class="ray ray-4"></div>
+                    <div class="ray ray-5"></div>
+                    <div class="ray ray-6"></div>
+                    <div class="ray ray-7"></div>
+                    <div class="ray ray-8"></div>
+                </div>
+                <!-- Sonnenkörper -->
+                <div class="sun-body"></div>
+            </div>
+        </div>
+        
+        <!-- Vogel der über die Szene fliegt -->
+        <div class="bird">
+            <div class="wing wing-left"></div>
+            <div class="wing wing-right"></div>
+        </div>
+        
+        <!-- Zweiter Vogel mit Verzögerung -->
+        <div class="bird bird-2">
+            <div class="wing wing-left"></div>
+            <div class="wing wing-right"></div>
+        </div>
+        
+        <!-- Landschaft / Horizont -->
+        <div class="landscape">
+            <div class="hills">
+                <div class="hill hill-back"></div>
+                <div class="hill hill-mid"></div>
+                <div class="hill hill-front"></div>
+            </div>
+            <!-- Bäume als Silhouetten -->
+            <div class="trees">
+                <div class="tree tree-1"></div>
+                <div class="tree tree-2"></div>
+                <div class="tree tree-3"></div>
+            </div>
+        </div>
+        
+        <!-- Wasserreflexion -->
+        <div class="water">
+            <div class="sun-reflection"></div>
+            <div class="ripple ripple-1"></div>
+            <div class="ripple ripple-2"></div>
+            <div class="ripple ripple-3"></div>
+        </div>
+    </div>
+    
+    <!-- Info-Box mit Steuerung -->
+    <div class="info-panel">
+        <h1>Sonnenaufgang</h1>
+        <p class="subtitle">CSS Animation mit @keyframes</p>
+        
+        <div class="animation-info">
+            <h2>Animationen:</h2>
+            <ul>
+                <li><span class="dot dot-sun"></span> Sonne steigt auf</li>
+                <li><span class="dot dot-sky"></span> Himmel ändert Farben</li>
+                <li><span class="dot dot-bird"></span> Vögel fliegen vorbei</li>
+                <li><span class="dot dot-cloud"></span> Wolken bewegen sich</li>
+                <li><span class="dot dot-rays"></span> Sonnenstrahlen pulsieren</li>
+            </ul>
+        </div>
+        
+        <!-- Optional: Steuerung per Hover/Button -->
+        <div class="controls">
+            <p class="hint">Hover über die Szene um die Zeit zu verlangsamen</p>
+            <button id="restartBtn" class="restart-button">
+                Animation neu starten
+            </button>
+        </div>
+    </div>
+    
+    <!-- JavaScript für optionale Button-Steuerung -->
+    <script>
+        /**
+         * Optionale JavaScript-Steuerung für die Animation
+         * Ermöglicht das Neustarten der Animation per Button
+         */
+        document.getElementById('restartBtn').addEventListener('click', function() {
+            // Szene kurz ausblenden und wieder einblenden
+            // Dies startet alle CSS-Animationen neu
+            const scene = document.querySelector('.scene-container');
+            scene.style.animation = 'none';
+            
+            // Alle animierten Elemente neu starten
+            const animatedElements = scene.querySelectorAll('*');
+            animatedElements.forEach(el => {
+                el.style.animation = 'none';
+            });
+            
+            // Reflow erzwingen
+            scene.offsetHeight;
+            
+            // Animationen wieder aktivieren
+            scene.style.animation = '';
+            animatedElements.forEach(el => {
+                el.style.animation = '';
+            });
+        });
+    </script>
+</body>
+</html>
+

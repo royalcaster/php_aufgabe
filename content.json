@@ -1,0 +1,46 @@
+{
+  "theater_name": "Hochschulbühne Mittweida",
+  "metadaten": {
+    "sprache": "de",
+    "zielgruppe": "Studierende, Theaterbegeisterte, Alumni, Regionale Öffentlichkeit",
+    "kategorien": ["Kultur", "Musical", "Campusleben", "Hinter den Kulissen"]
+  },
+  "blog_artikel_vorlagen": [
+    {
+      "id": "blog_001",
+      "titel": "Das Mammutprojekt: Wie Artus - Excalibur die Bühne erobert",
+      "fokus": "Aktuelle Produktion 2025",
+      "fliesstext": "Die Hochschulbühne Mittweida stellt sich 2025 ihrer bisher größten Herausforderung: Das Musical 'Artus – Excalibur'. In den dunklen Gängen des Herbert E. Graus-Studios klirren bereits die Schwerter – und das ist wörtlich zu nehmen. Unter der professionellen Anleitung von Judith Schäffer absolvieren die Darsteller ein intensives Bühnenkampf-Training, um die epischen Schlachten um Camelot authentisch zum Leben zu erwecken. Doch nicht nur die Action überzeugt: Mit einem 18-köpfigen Live-Orchester und komplexen sechsstimmigen Chor-Arrangements setzt das studentische Ensemble musikalische Maßstäbe, die weit über ein klassisches Hochschulprojekt hinausgehen. Ab dem 11. Dezember verwandelt sich das Medienzentrum in eine Welt aus Ehre, Verrat und Magie.",
+      "keywords": ["Artus Excalibur", "Bühnenkampf", "Musical Mittweida", "Live-Orchester"]
+    },
+    {
+      "id": "blog_002",
+      "titel": "Vom Fernsehstudio zum Broadway: Die Technik hinter der Show",
+      "fokus": "Technik & Innovation",
+      "fliesstext": "Was viele Zuschauer nicht wissen: Die Spielstätte der Hochschulbühne ist eigentlich ein hochmodernes Fernsehstudio. Dies stellt das Technik-Team jedes Jahr vor eine logistische Meisterleistung. Wo sonst Kameras für TV-Produktionen stehen, muss eine Infrastruktur für ein vollwertiges Musical geschaffen werden. Das bedeutet: Kilometerlange Kabel für das Sounddesign, eine präzise Lichtprogrammierung für dramatische Effekte und ein Bühnenbau, der mobil genug sein muss, um den Studiobetrieb nicht dauerhaft zu blockieren. Besonders spannend ist der Einsatz digitaler Elemente, wie schon 2024 bei 'Linie 1' zu sehen war, wo virtuelle Kulissen mit physischen Requisiten verschmolzen. Hier wird deutlich, dass die Studierenden der Medientechnik ihr theoretisches Wissen in einer harten, aber kreativen Praxisprüfung anwenden.",
+      "keywords": ["Medientechnik", "Bühnenbau", "Herbert E. Graus Studio", "Sounddesign"]
+    },
+    {
+      "id": "blog_003",
+      "titel": "Ein Jahrzehnt Leidenschaft: Die Geschichte des Vereins",
+      "fokus": "Historie & Gemeinschaft",
+      "fliesstext": "Seit ihrer Gründung im Jahr 2014 hat sich die Hochschulbühne Mittweida von einer kleinen Theatergruppe zu einem der größten studentischen Vereine der Region entwickelt. Mit mittlerweile bis zu 130 Mitwirkenden pro Saison ist das Projekt ein Schmelztiegel der Talente. Ob BWL-Studierende im Marketing, Soziale Arbeit im Ensemble oder Medientechniker an den Reglern – die Bühne verbindet alle Fakultäten. Projekte wie 'Dracula' (2017) oder 'Aida' (2018) haben gezeigt, dass der Verein auch vor großen Namen nicht zurückschreckt. Trotz der wechselnden Besetzung – bedingt durch den Studienabschluss vieler Mitglieder – bleibt der Kern immer gleich: Die unbändige Lust, gemeinsam etwas zu erschaffen, das die Zuschauer für zwei Stunden den Alltag vergessen lässt. Der Erfolg gibt ihnen recht: Die Vorstellungen sind regelmäßig binnen kürzester Zeit ausverkauft.",
+      "keywords": ["Vereinsgeschichte", "Prof. Mike Winkler", "Studentisches Engagement", "Rückblick"]
+    },
+    {
+      "id": "blog_004",
+      "titel": "Mehr als nur Schauspiel: Die Gewerke hinter dem Vorhang",
+      "fokus": "Berufsorientierung & Handwerk",
+      "fliesstext": "Wenn der Vorhang aufgeht, sieht das Publikum das Ensemble im Scheinwerferlicht. Doch die Magie der Hochschulbühne beginnt Monate vorher in den Werkstätten und Planungsbüros. Das Team 'Kostüm & Maske' steht vor der Aufgabe, über 100 Rollencharaktere einzukleiden – oft mit sehr begrenztem Budget, aber unendlicher Kreativität. Hier werden historische Gewänder genäht und Perücken frisiert. Parallel dazu kümmert sich das Produktionsteam um das Sponsoring und das Ticketing. Die Hochschulbühne ist somit eine praxisnahe Ausbildungsschmiede: Hier lernen Studierende Projektmanagement, Teamführung und Krisenbewältigung unter Realbedingungen. Es ist dieses Zusammenspiel aller Gewerke, das die Qualität der Produktionen auf ein professionelles Niveau hebt.",
+      "keywords": ["Kostümdesign", "Projektmanagement", "Kreativwirtschaft", "Maskenbild"]
+    }
+  ],
+  "zusatzinfos_fuer_teaser": {
+    "ticket_call_to_action": "Sichere dir dein Ticket für Artus – Excalibur ab dem 08. Oktober online oder im T9!",
+    "mitmach_info": "Du willst selbst auf oder hinter der Bühne stehen? Die Castings finden jährlich zu Semesterbeginn statt.",
+    "social_media_handles": {
+      "instagram": "@hochschulbuehne_mw",
+      "facebook": "Hochschulbühne Mittweida"
+    }
+  }
+}
