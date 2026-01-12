@@ -1,777 +1,275 @@
 /**
  * CSS Animation - Sonnenaufgang
  * 
- * Dieses Stylesheet enthält mehrere @keyframes Animationen:
- * 1. sunRise - Sonne steigt auf (translateY)
- * 2. skyColorChange - Himmel ändert seine Farben
- * 3. birdFly - Vogel fliegt über den Bildschirm
- * 4. wingFlap - Vogelflügel schlagen
- * 5. cloudDrift - Wolken bewegen sich
- * 6. rayPulse - Sonnenstrahlen pulsieren
- * 7. starFade - Sterne verschwinden
- * 8. waterShimmer - Wasser glitzert
+ * Animationen mit @keyframes:
+ * 1. sunRise - Sonne steigt auf
+ * 2. skyChange - Himmel Farbwechsel
+ * 3. birdFly - Vogel fliegt
+ * 4. cloudMove - Wolken bewegen sich
  */
 
-/* ============================================
-   CSS Custom Properties
-   ============================================ */
-:root {
-    /* Farben für verschiedene Tageszeiten */
-    --sky-night: #0f0c29;
-    --sky-dawn: #302b63;
-    --sky-sunrise: #24243e;
-    --sky-morning: #667eea;
-    --sky-day: #74b9ff;
-    
-    /* Sonne */
-    --sun-color-early: #ff6b6b;
-    --sun-color-mid: #ffa502;
-    --sun-color-full: #ffd93d;
-    
-    /* Landschaft */
-    --hill-back: #1a1a2e;
-    --hill-mid: #16213e;
-    --hill-front: #0f0f1a;
-    
-    /* Wasser */
-    --water-dark: #0c0c1a;
-    --water-light: #1a1a3a;
-    
-    /* Animation Dauer - Die Hauptanimation dauert 20 Sekunden */
-    --animation-duration: 20s;
-}
-
-/* ============================================
-   Reset und Basis-Styles
-   ============================================ */
-*, *::before, *::after {
-    box-sizing: border-box;
+/* Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
     display: flex;
-    background: #0a0a0a;
-    overflow: hidden;
+    min-height: 100vh;
+    background: #1a1a2e;
 }
 
-/* ============================================
-   Szene Container - Hauptbereich der Animation
-   ============================================ */
-.scene-container {
+/* ================================
+   Szene Container
+   ================================ */
+.scene {
     flex: 1;
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
-    /* Hover-Effekt verlangsamt die Animation */
-    transition: filter 0.5s ease;
 }
 
-/* Hover-Effekt entfernt um Flackern beim Cursor-Wechsel zu vermeiden */
-
-/* ============================================
-   ANIMATION 1: Himmel mit Farbverlauf-Animation
-   @keyframes skyColorChange - 5 Keyframes für Farbübergang
-   ============================================ */
+/* ================================
+   ANIMATION 1: Himmel Farbwechsel
+   @keyframes mit 4 Zuständen
+   ================================ */
 .sky {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 70%;
-    /* Animation des Hintergrundgradienten */
-    animation: skyColorChange var(--animation-duration) ease-in-out infinite;
-}
-
-@keyframes skyColorChange {
-    /* Keyframe 1: Nacht - Dunkelblau */
-    0% {
-        background: linear-gradient(
-            to bottom,
-            #0f0c29 0%,
-            #302b63 50%,
-            #24243e 100%
-        );
-    }
-    /* Keyframe 2: Frühe Dämmerung - Erste Rottöne */
-    25% {
-        background: linear-gradient(
-            to bottom,
-            #1a1a2e 0%,
-            #4a3f6b 30%,
-            #e94560 70%,
-            #ff9a3c 100%
-        );
-    }
-    /* Keyframe 3: Sonnenaufgang - Orange und Pink */
-    50% {
-        background: linear-gradient(
-            to bottom,
-            #2d3561 0%,
-            #667eea 30%,
-            #f8a5c2 60%,
-            #ffeaa7 100%
-        );
-    }
-    /* Keyframe 4: Morgen - Hellblau */
-    75% {
-        background: linear-gradient(
-            to bottom,
-            #74b9ff 0%,
-            #a8d8ea 50%,
-            #ffeaa7 100%
-        );
-    }
-    /* Keyframe 5: Zurück zur Nacht (Loop) */
-    100% {
-        background: linear-gradient(
-            to bottom,
-            #0f0c29 0%,
-            #302b63 50%,
-            #24243e 100%
-        );
-    }
-}
-
-/* ============================================
-   Sterne - Verschwinden bei Sonnenaufgang
-   @keyframes starFade - 3 Keyframes
-   ============================================ */
-.stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
+    animation: skyChange 15s ease-in-out infinite;
 }
 
-.star {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: white;
-    border-radius: 50%;
-    animation: starFade var(--animation-duration) ease-in-out infinite;
-}
-
-.star-1 { top: 10%; left: 20%; animation-delay: 0s; }
-.star-2 { top: 15%; left: 70%; animation-delay: 0.2s; }
-.star-3 { top: 25%; left: 40%; animation-delay: 0.1s; }
-.star-4 { top: 8%; left: 85%; animation-delay: 0.3s; }
-.star-5 { top: 20%; left: 55%; animation-delay: 0.15s; }
-
-@keyframes starFade {
-    /* Keyframe 1: Sterne sichtbar in der Nacht */
+@keyframes skyChange {
+    /* Nacht */
     0% {
-        opacity: 1;
-        transform: scale(1);
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     }
-    /* Keyframe 2: Sterne verschwinden beim Sonnenaufgang */
-    25% {
-        opacity: 0;
-        transform: scale(0.5);
+    /* Morgenröte */
+    33% {
+        background: linear-gradient(to bottom, #2c3e50, #e74c3c, #f39c12);
     }
-    /* Keyframe 3: Sterne bleiben unsichtbar */
-    75% {
-        opacity: 0;
-        transform: scale(0.5);
+    /* Tag */
+    66% {
+        background: linear-gradient(to bottom, #3498db, #85c1e9, #f9e79f);
     }
-    /* Keyframe 4: Sterne erscheinen wieder */
+    /* zurück zur Nacht */
     100% {
-        opacity: 1;
-        transform: scale(1);
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     }
 }
 
-/* ============================================
+/* ================================
    ANIMATION 2: Sonne steigt auf
-   @keyframes sunRise - 5 Keyframes
-   ============================================ */
-.sun-container {
+   @keyframes mit 5 Zuständen
+   ================================ */
+.sun {
     position: absolute;
-    bottom: 38%;
+    bottom: 25%;
     left: 50%;
+    width: 80px;
+    height: 80px;
+    background: #f1c40f;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #f39c12, 0 0 100px #e67e22;
     transform: translateX(-50%);
-    z-index: 5;
-    /* Animation: Sonne steigt auf */
-    animation: sunRise var(--animation-duration) ease-in-out infinite;
+    animation: sunRise 15s ease-in-out infinite;
 }
 
 @keyframes sunRise {
-    /* Keyframe 1: Sonne unter dem Horizont (unsichtbar) */
+    /* unter Horizont */
     0% {
-        transform: translateX(-50%) translateY(50px);
+        transform: translateX(-50%) translateY(100px);
         opacity: 0;
+        background: #e74c3c;
     }
-    /* Keyframe 2: Sonne erscheint am Horizont */
+    /* erscheint */
     20% {
-        transform: translateX(-50%) translateY(20px);
-        opacity: 0.7;
-    }
-    /* Keyframe 3: Sonne steigt weiter */
-    40% {
-        transform: translateX(-50%) translateY(-40px);
-        opacity: 1;
-    }
-    /* Keyframe 4: Sonne am höchsten Punkt */
-    60% {
-        transform: translateX(-50%) translateY(-100px);
-        opacity: 1;
-    }
-    /* Keyframe 5: Sonne sinkt und verschwindet */
-    100% {
         transform: translateX(-50%) translateY(50px);
-        opacity: 0;
+        opacity: 0.8;
+        background: #e67e22;
     }
-}
-
-.sun {
-    position: relative;
-    width: 120px;
-    height: 120px;
-}
-
-/* Sonnenkörper mit Farbanimation */
-.sun-body {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    /* Animation für Farbänderung der Sonne */
-    animation: sunColor var(--animation-duration) ease-in-out infinite;
-    box-shadow: 
-        0 0 60px rgba(255, 217, 61, 0.6),
-        0 0 100px rgba(255, 165, 2, 0.4),
-        0 0 140px rgba(255, 107, 107, 0.2);
-}
-
-@keyframes sunColor {
-    /* Rötlich am Anfang */
-    0% { background: #ff6b6b; }
-    25% { background: #ff9a3c; }
-    /* Orange beim Aufstieg */
-    50% { background: #ffa502; }
-    /* Gelb am Tag */
-    75% { background: #ffd93d; }
-    100% { background: #ff6b6b; }
-}
-
-/* ============================================
-   ANIMATION 3: Sonnenstrahlen pulsieren
-   @keyframes rayPulse - 4 Keyframes
-   ============================================ */
-.sun-rays {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-}
-
-.ray {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 4px;
-    height: 40px;
-    background: linear-gradient(to top, rgba(255, 217, 61, 0.8), transparent);
-    transform-origin: bottom center;
-    border-radius: 2px;
-    /* Animation: Strahlen pulsieren */
-    animation: rayPulse 2s ease-in-out infinite;
-}
-
-/* Strahlen in verschiedene Richtungen positionieren */
-.ray-1 { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0s; }
-.ray-2 { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.25s; }
-.ray-3 { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 0.5s; }
-.ray-4 { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 0.75s; }
-.ray-5 { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 1s; }
-.ray-6 { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 1.25s; }
-.ray-7 { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 1.5s; }
-.ray-8 { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 1.75s; }
-
-@keyframes rayPulse {
-    /* Keyframe 1: Normal */
-    0% {
-        opacity: 0.6;
-        height: 35px;
-    }
-    /* Keyframe 2: Heller und länger */
-    50% {
+    /* aufsteigend */
+    40% {
+        transform: translateX(-50%) translateY(0);
         opacity: 1;
-        height: 50px;
+        background: #f39c12;
     }
-    /* Keyframe 3: Zurück zu normal */
+    /* höchster Punkt */
+    60% {
+        transform: translateX(-50%) translateY(-80px);
+        opacity: 1;
+        background: #f1c40f;
+    }
+    /* sinkt wieder */
     100% {
-        opacity: 0.6;
-        height: 35px;
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+        background: #e74c3c;
     }
 }
 
-/* ============================================
-   ANIMATION 4: Wolken ziehen vorbei
-   @keyframes cloudDrift - 3 Keyframes
-   ============================================ */
+/* ================================
+   Wolken mit Animation
+   ================================ */
 .cloud {
     position: absolute;
-    display: flex;
-    gap: -20px;
-    /* Animation: Wolken bewegen sich von links nach rechts */
-    animation: cloudDrift 30s linear infinite;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    animation: cloudMove 20s linear infinite;
 }
 
 .cloud-1 {
     top: 15%;
-    left: -200px;
-    opacity: 0.8;
-    transform: scale(1);
+    left: -150px;
+    width: 120px;
+    height: 40px;
 }
 
 .cloud-2 {
     top: 25%;
-    left: -300px;
-    opacity: 0.6;
-    transform: scale(0.7);
-    animation-delay: -15s;
-    animation-duration: 40s;
-}
-
-.cloud-part {
+    left: -100px;
     width: 80px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 40px;
-    margin-left: -30px;
+    height: 30px;
+    animation-delay: -10s;
+    animation-duration: 25s;
 }
 
-.cloud-part:first-child {
-    margin-left: 0;
-}
-
-.cloud-part:nth-child(2) {
-    width: 100px;
-    height: 50px;
-    margin-top: -15px;
-}
-
-@keyframes cloudDrift {
-    /* Keyframe 1: Start links außerhalb */
+@keyframes cloudMove {
     0% {
         transform: translateX(0);
     }
-    /* Keyframe 2: Mitte des Bildschirms */
-    50% {
-        transform: translateX(calc(50vw + 100px));
-    }
-    /* Keyframe 3: Ende rechts außerhalb */
     100% {
-        transform: translateX(calc(100vw + 300px));
+        transform: translateX(calc(100vw + 200px));
     }
 }
 
-/* ============================================
-   ANIMATION 5: Vogel fliegt vorbei
-   @keyframes birdFly und wingFlap - Mehrere Keyframes
-   ============================================ */
+/* ================================
+   ANIMATION 3: Vogel fliegt
+   @keyframes mit Flügelschlag
+   ================================ */
 .bird {
     position: absolute;
     top: 30%;
-    left: -50px;
-    z-index: 20;
-    /* Animation: Vogel fliegt von links nach rechts */
-    animation: birdFly 8s ease-in-out infinite;
-    animation-delay: 5s;
-}
-
-.bird-2 {
-    top: 35%;
-    animation-delay: 12s;
-    animation-duration: 10s;
-    transform: scale(0.6);
+    left: -30px;
+    animation: birdFly 8s linear infinite;
+    animation-delay: 3s;
 }
 
 @keyframes birdFly {
-    /* Keyframe 1: Start links */
     0% {
-        left: -50px;
+        left: -30px;
         top: 30%;
-        opacity: 0;
     }
-    /* Keyframe 2: Erscheint */
-    10% {
-        opacity: 1;
-    }
-    /* Keyframe 3: Fliegt nach oben */
-    30% {
-        left: 30%;
+    25% {
         top: 25%;
     }
-    /* Keyframe 4: Fliegt nach unten */
     50% {
         left: 50%;
         top: 28%;
     }
-    /* Keyframe 5: Weiter nach oben */
-    70% {
-        left: 70%;
+    75% {
         top: 22%;
     }
-    /* Keyframe 6: Verschwindet */
-    90% {
-        opacity: 1;
-    }
-    /* Keyframe 7: Außerhalb rechts */
     100% {
         left: 110%;
-        top: 20%;
-        opacity: 0;
+        top: 25%;
     }
 }
 
-/* Vogelflügel */
 .wing {
     position: absolute;
-    width: 25px;
-    height: 8px;
-    background: #1a1a2e;
-    border-radius: 50% 50% 0 0;
-    /* Animation: Flügelschlag */
+    width: 20px;
+    height: 6px;
+    background: #2c3e50;
+    border-radius: 50%;
     animation: wingFlap 0.2s ease-in-out infinite;
 }
 
 .wing-left {
-    left: -20px;
-    transform-origin: right center;
+    left: -15px;
+    transform-origin: right;
 }
 
 .wing-right {
-    right: -20px;
-    transform-origin: left center;
-    animation-delay: 0.1s;
+    right: -15px;
+    transform-origin: left;
 }
 
 @keyframes wingFlap {
-    /* Keyframe 1: Flügel oben */
-    0% {
-        transform: rotate(-30deg);
-    }
-    /* Keyframe 2: Flügel mitte */
-    50% {
-        transform: rotate(30deg);
-    }
-    /* Keyframe 3: Flügel wieder oben */
-    100% {
-        transform: rotate(-30deg);
-    }
+    0% { transform: rotate(-20deg); }
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(-20deg); }
 }
 
-/* ============================================
-   Landschaft - Hügel und Bäume
-   ============================================ */
-.landscape {
-    position: absolute;
-    bottom: 30%;
-    left: 0;
-    right: 0;
-    height: 20%;
-    z-index: 20;
-}
-
-.hills {
+/* ================================
+   Boden
+   ================================ */
+.ground {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100%;
-}
-
-.hill {
-    position: absolute;
-    bottom: 0;
-    border-radius: 50% 50% 0 0;
-}
-
-.hill-back {
-    left: -10%;
-    width: 60%;
-    height: 120%;
+    height: 25%;
     background: #1a1a2e;
+    border-radius: 50% 50% 0 0 / 20% 20% 0 0;
 }
 
-.hill-mid {
-    right: -5%;
-    width: 50%;
-    height: 100%;
+/* ================================
+   Info Box (Seitenleiste)
+   ================================ */
+.info-box {
+    width: 280px;
     background: #16213e;
+    padding: 30px;
+    color: white;
 }
 
-.hill-front {
-    left: 30%;
-    width: 80%;
-    height: 80%;
-    background: #0f0f1a;
+.info-box h1 {
+    font-size: 24px;
+    color: #f1c40f;
+    margin-bottom: 5px;
 }
 
-/* Bäume als Silhouetten */
-.trees {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.info-box p {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 30px;
 }
 
-.tree {
-    position: absolute;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 60px solid #0a0a0f;
-}
-
-.tree::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: -10px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 45px solid #0a0a0f;
-}
-
-.tree-1 { left: 15%; height: 80px; }
-.tree-2 { left: 20%; transform: scale(0.7); }
-.tree-3 { right: 25%; transform: scale(1.2); }
-
-/* ============================================
-   ANIMATION 6: Wasser mit Reflexion
-   @keyframes waterShimmer - 4 Keyframes
-   ============================================ */
-.water {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 30%;
-    background: linear-gradient(
-        to bottom,
-        #0c0c1a 0%,
-        #1a1a3a 100%
-    );
-    z-index: 10;
-    overflow: hidden;
-}
-
-/* Sonnenreflexion im Wasser */
-.sun-reflection {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 200, 100, 0.6) 0%,
-        rgba(255, 165, 2, 0.3) 30%,
-        rgba(255, 217, 61, 0.1) 100%
-    );
-    filter: blur(10px);
-    /* Animation der Reflexion */
-    animation: reflectionShimmer var(--animation-duration) ease-in-out infinite;
-}
-
-@keyframes reflectionShimmer {
-    0% { opacity: 0; width: 40px; }
-    30% { opacity: 0.5; width: 50px; }
-    50% { opacity: 1; width: 80px; }
-    70% { opacity: 0.8; width: 60px; }
-    100% { opacity: 0; width: 40px; }
-}
-
-/* Wasserkreise/Wellen */
-.ripple {
-    position: absolute;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: rippleExpand 4s ease-out infinite;
-}
-
-.ripple-1 {
-    bottom: 20%;
-    left: 30%;
-    width: 20px;
-    height: 10px;
-}
-
-.ripple-2 {
-    bottom: 40%;
-    left: 60%;
-    width: 15px;
-    height: 7px;
-    animation-delay: 1.5s;
-}
-
-.ripple-3 {
-    bottom: 60%;
-    left: 45%;
-    width: 25px;
-    height: 12px;
-    animation-delay: 3s;
-}
-
-@keyframes rippleExpand {
-    /* Keyframe 1: Klein */
-    0% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-    /* Keyframe 2: Wächst */
-    50% {
-        transform: scale(2);
-        opacity: 0.3;
-    }
-    /* Keyframe 3: Groß und verschwindet */
-    100% {
-        transform: scale(3);
-        opacity: 0;
-    }
-}
-
-/* ============================================
-   Info Panel - Seitenleiste
-   ============================================ */
-.info-panel {
-    width: 320px;
-    min-height: 100vh;
-    background: #0f0f0f;
-    border-left: 1px solid #2a2a2a;
-    padding: 3rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    z-index: 100;
-}
-
-.info-panel h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #ffd93d;
-    letter-spacing: -0.02em;
-}
-
-.subtitle {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: -1rem;
-}
-
-.animation-info {
-    background: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #2a2a2a;
-}
-
-.animation-info h2 {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #888;
+.info-box h2 {
+    font-size: 14px;
+    color: #95a5a6;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
 }
 
-.animation-info ul {
+.info-box ul {
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    margin-bottom: 30px;
 }
 
-.animation-info li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    color: #ccc;
+.info-box li {
+    padding: 8px 0;
+    border-bottom: 1px solid #2c3e50;
+    font-size: 14px;
 }
 
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
-.dot-sun { background: #ffd93d; }
-.dot-sky { background: linear-gradient(135deg, #667eea, #f8a5c2); }
-.dot-bird { background: #1a1a2e; border: 2px solid #666; }
-.dot-cloud { background: rgba(255, 255, 255, 0.8); }
-.dot-rays { background: linear-gradient(to right, #ffd93d, transparent); }
-
-.controls {
-    margin-top: auto;
-}
-
-.hint {
-    font-size: 0.85rem;
-    color: #555;
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-.restart-button {
+.info-box button {
     width: 100%;
-    padding: 1rem 1.5rem;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #0f0f0f;
-    background: #ffd93d;
+    padding: 12px;
+    background: #f1c40f;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
-.restart-button:hover {
-    background: #ffe066;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255, 217, 61, 0.3);
+.info-box button:hover {
+    background: #f39c12;
 }
-
-.restart-button:active {
-    transform: translateY(0);
-}
-
-/* ============================================
-   Responsive (für Info-Panel)
-   ============================================ */
-@media (max-width: 900px) {
-    body {
-        flex-direction: column;
-    }
-    
-    .scene-container {
-        min-height: 60vh;
-    }
-    
-    .info-panel {
-        width: 100%;
-        min-height: auto;
-        border-left: none;
-        border-top: 1px solid #2a2a2a;
-    }
-}
-
