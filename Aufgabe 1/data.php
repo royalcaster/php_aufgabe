@@ -15,6 +15,8 @@ $result[0] = array(
     "content" => '
         <p>Die Hochschulbühne Mittweida stellt sich 2025 ihrer bisher größten Herausforderung: Das Musical <strong>„Artus – Excalibur"</strong>. In den dunklen Gängen des Herbert E. Graus-Studios klirren bereits die Schwerter – und das ist wörtlich zu nehmen.</p>
         
+        <img src="img/ensemble.jpg" alt="Das Ensemble der Hochschulbühne Mittweida" class="post-image">
+        
         <h3>Intensives Bühnenkampf-Training</h3>
         <p>Unter der professionellen Anleitung von Judith Schäffer absolvieren die Darsteller ein intensives Bühnenkampf-Training, um die epischen Schlachten um Camelot authentisch zum Leben zu erwecken.</p>
         

@@ -176,6 +176,15 @@ body {
     background: none;
 }
 
+/* Bilder im Beitrag */
+.post-content img,
+.post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
 /* Autor Box */
 .post-footer {
     margin-top: 40px;
